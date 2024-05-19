@@ -1,0 +1,111 @@
+<h1>Batch Process List</h1>
+
+<div class="card">
+  <!-- <p-toast /> -->
+  <p-table
+  [value]="batchProcesses"
+  [lazy]="true"
+  (onLazyLoad)="loadBatchProcess($event)"
+  dataKey="uuid"
+  [tableStyle]="{ 'min-width': '60rem' }"
+  [loading]="loading"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  [totalRecords]="totalRecords"
+  [expandedRowKeys]="expandedRows">
+      <ng-template pTemplate="caption">
+          <div class="flex flex-wrap justify-content-end gap-2">
+              <p-button label="Expand All" icon="pi pi-plus" text (onClick)="expandAll()" />
+              <p-button label="Collapse All" icon="pi pi-minus" text (onClick)="collapseAll()" />
+          </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="width: 5rem"></th>
+              <th pSortableColumn="name">
+                <div class="flex align-items-center">
+                  Name
+                  <p-columnFilter type="text" field="name" display="menu" />
+                  <p-sortIcon field="name" />
+                </div>
+                </th>
+              <th pSortableColumn="price">
+                <div class="flex align-items-center">
+                  UUID
+                  <p-columnFilter type="text" field="uuid" display="menu" />
+                  <p-sortIcon field="uuid" />
+                </div>
+              </th>
+              <th pSortableColumn="status">
+                <div class="flex align-items-center">
+                  Status
+                  <p-columnFilter type="text" field="Status" display="menu" />
+                  <p-sortIcon field="Status" />
+                </div></th>
+              <th pSortableColumn="totalJobCount">Total Jobs <p-sortIcon field="totalJobCount" /></th>
+              <th pSortableColumn="pendingJobCount">Pending Jobs <p-sortIcon field="pendingJobCount" /></th>
+              <th pSortableColumn="failedJobCount">Failed Jobs <p-sortIcon field="failedJobCount" /></th>
+              <th pSortableColumn="cancelledAt">Cancelled at <p-sortIcon field="cancelledAt" /></th>
+              <th pSortableColumn="createdAt">Create at <p-sortIcon field="createdAt" /></th>
+              <th pSortableColumn="finishedAt">Finished at <p-sortIcon field="finishedAt" /></th>
+          </tr>
+
+      </ng-template>
+      <ng-template pTemplate="body" let-batchProcess let-expanded="expanded">
+          <tr>
+              <td>
+                  <p-button type="button" pRipple [pRowToggler]="batchProcess" [text]="true" [rounded]="true" [plain]="true" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'" />
+              </td>
+              <td>{{ batchProcess.name }}</td>
+              <td>{{ batchProcess.uuid }}</td>
+              <td>
+                <p-tag [value]="batchProcess.status" [severity]="getStatusSeverity(batchProcess.status)" />
+              </td>
+              <td>{{ batchProcess.totalJobCount  }}</td>
+              <td>{{ batchProcess.pendingJobCount  }}</td>
+              <td>{{ batchProcess.failedJobCount  }}</td>
+              <td>{{ batchProcess.cancelledAt  }}</td>
+              <td>{{ batchProcess.createdAt  }}</td>
+              <td>{{ batchProcess.finishedAt  }}</td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="rowexpansion" let-batchProcess>
+          <tr>
+              <td colspan="7">
+                  <div class="p-3">
+                      <p-table [value]="batchProcess.jobs" dataKey="id">
+                          <ng-template pTemplate="header">
+                              <tr>
+                                  <th pSortableColumn="id">Id <p-sortIcon field="id" /></th>
+                                  <th pSortableColumn="uuid">Uuid <p-sortIcon field="uuid" /></th>
+                                  <th pSortableColumn="payload">Payload <p-sortIcon field="payload" /></th>
+                                  <th pSortableColumn="failedAt">Failed at <p-sortIcon field="failedAt" /></th>
+                                  <th pSortableColumn="status">Status <p-sortIcon field="status" /></th>
+                                  <!-- <th style="width: 4rem"></th> -->
+                              </tr>
+                          </ng-template>
+                          <ng-template pTemplate="body" let-job>
+                              <tr>
+                                  <td>{{ job.id }}</td>
+                                  <td>{{ job.uuid }}</td>
+                                  <td>{{ job.payload }}</td>
+                                  <td>{{ job.failedAt }}</td>
+                                  <td>
+                                      <p-tag [value]="job.status" [severity]="getJobStatusSeverity(job.status)" />
+                                  </td>
+                                  <!-- <td><p-button type="button" icon="pi pi-search" /></td> -->
+                              </tr>
+                          </ng-template>
+                          <ng-template pTemplate="emptymessage">
+                              <tr>
+                                  <td colspan="6">There are no order for this product yet.</td>
+                              </tr>
+                          </ng-template>
+                      </p-table>
+                  </div>
+              </td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

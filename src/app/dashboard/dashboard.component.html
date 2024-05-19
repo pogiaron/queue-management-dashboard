@@ -1,0 +1,38 @@
+<h1>Dashboard</h1>
+<div class="flex">
+  <p-card class="mr-8">
+    <h2>Total batch processes</h2>
+    <p class="m-0">
+        10
+    </p>
+  </p-card>
+  <p-card class="mr-8">
+    <h2 class="m-0">Batch in running</h2>
+    <p class="m-0">
+      11/01/2000 08:50
+    </p>
+    <p class="m-0">
+      Lorem Ipsum
+    </p>
+    <p class="m-0">
+      9bc5d141-a166-4652-98c8-84268cd5ec95
+    </p>
+  </p-card>
+  <p-card class="">
+    <h2 class="m-0">Last batch
+    </h2>
+    <p class="m-0">
+      11/01/2000 07:50
+    </p>
+    <p class="m-0">
+      Lorem Ipsum 2
+    </p>
+    <p class="m-0">
+      9bc5d141-a166-4652-98c8-84268cd5ec95
+    </p>
+  </p-card>
+</div>
+
+<app-batch-process-summary [batchProcessSummary]="batchInRunning"></app-batch-process-summary>
+<app-batch-process-summary [batchProcessSummary]="lastBatch"></app-batch-process-summary>
+

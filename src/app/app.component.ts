@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { StyleClassModule } from 'primeng/styleclass';
+import { MenubarModule } from 'primeng/menubar';
+import { LogoComponent } from './logo/logo.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink, StyleClassModule, MenubarModule, LogoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

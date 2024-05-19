@@ -1,0 +1,185 @@
+.layout-light {
+  --primary-color-default:var(--primary-600);
+  --primary-color-inverse-default:var(--surface-0);
+  --topbar-sticky-bg:rgba(255,255,255,.7);
+  --card-border: 1px solid var(--surface-border);
+  --card-bg: var(--surface-card);
+  --glow-image: url(https://www.primefaces.org/cdn/primeng/images/layout/pattern.png);
+  --glow-blend: hard-light, multiply;
+  --topbar-border: rgba(0,0,0,.05);
+  --mobile-menu-bg: var(--surface-overlay);
+  --demo-code-bg: var(--surface-800);
+  --demo-code-button-color: var(--surface-300);
+  --demo-code-button-hover-bg: rgba(255,255,255,.1);
+  --demo-code-button-hover-color: var(--surface-100);
+  --doc-highlight-text-bg: var(--surface-200);
+  --doc-highlight-text-color: var(--surface-700);
+}
+
+.layout-content {
+  padding: 6rem 4rem 0 4rem;
+  display: flex;
+}
+.layout-content .layout-content-slot {
+  flex: 1 1 auto;
+  width: 1%;
+  padding-top: 0.5rem;
+}
+
+
+.layout-sidebar {
+  position: sticky;
+  left: 0;
+  top: 6rem;
+  height: calc(100vh - 9rem);
+  user-select: none;
+  transition: transform 0.4s cubic-bezier(0.05, 0.74, 0.2, 0.99), opacity 0.3s;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0 0;
+  flex: 0 0 250px;
+  margin-right: 4rem;
+  overflow: auto;
+}
+.layout-sidebar .logo {
+  display: flex;
+  justify-content: center;
+}
+.layout-sidebar nav {
+  padding: 0 1rem 0 0;
+  margin: 0;
+  flex-grow: 1;
+}
+.layout-sidebar .layout-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.layout-sidebar .layout-menu > li {
+  margin-bottom: 0.25rem;
+}
+.layout-sidebar .layout-menu > li > button,
+.layout-sidebar .layout-menu > li > a {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0.5rem 0;
+  color: var(--surface-900);
+  font-weight: 600;
+  transition: all 0.2s;
+  position: relative;
+  border-radius: var(--border-radius);
+}
+.layout-sidebar .layout-menu > li > button .menu-icon,
+.layout-sidebar .layout-menu > li > a .menu-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--border-radius);
+  margin-right: 0.5rem;
+  border: 1px solid var(--surface-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  position: relative;
+  background-color: transparent;
+}
+.layout-sidebar .layout-menu > li > button .menu-icon i,
+.layout-sidebar .layout-menu > li > a .menu-icon i {
+  color: var(--surface-700);
+  transition: all 0.2s;
+}
+.layout-sidebar .layout-menu > li > button .menu-toggle-icon,
+.layout-sidebar .layout-menu > li > a .menu-toggle-icon {
+  color: var(--surface-700);
+  margin-left: auto;
+}
+.layout-sidebar .layout-menu > li > button:hover .menu-icon,
+.layout-sidebar .layout-menu > li > a:hover .menu-icon {
+  background-color: var(--surface-card);
+}
+.layout-sidebar .layout-menu > li > button:hover .menu-icon i,
+.layout-sidebar .layout-menu > li > a:hover .menu-icon i {
+  color: var(--primary-color-default);
+}
+.layout-sidebar .layout-menu > li > button:hover .menu-toggle-icon,
+.layout-sidebar .layout-menu > li > a:hover .menu-toggle-icon {
+  color: var(--surface-900);
+}
+.layout-sidebar .layout-menu > li > button.router-link-active,
+.layout-sidebar .layout-menu > li > a.router-link-active {
+  color: var(--primary-color-default);
+}
+.layout-sidebar .layout-menu > li > button.router-link-active > .menu-icon i,
+.layout-sidebar .layout-menu > li > a.router-link-active > .menu-icon i {
+  color: var(--primary-color-default);
+}
+.layout-sidebar .layout-menu > li > button:focus-visible,
+.layout-sidebar .layout-menu > li > a:focus-visible {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: inset var(--focus-ring);
+}
+.layout-sidebar .layout-menu > li > div ol {
+  margin: 0 0 0 1rem;
+  padding: 0.25rem 0;
+  list-style: none;
+}
+.layout-sidebar .layout-menu > li > div ol li a {
+  color: var(--surface-700);
+  border-left: 1px solid var(--surface-border);
+  transition: all 0.2s;
+  font-weight: 450;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  color: var(--surface-700);
+  transition: all 0.2s;
+  position: relative;
+}
+.layout-sidebar .layout-menu > li > div ol li a:focus-visible {
+  outline: 0 none;
+  box-shadow: inset var(--focus-ring);
+}
+.layout-sidebar .layout-menu > li > div ol li a:hover {
+  color: var(--surface-900);
+  border-left-color: var(--surface-500);
+}
+.layout-sidebar .layout-menu > li > div ol li a.router-link-active {
+  color: var(--primary-color-default);
+  border-left-color: var(--primary-color-default);
+}
+.layout-sidebar .layout-menu > li > div ol li ol {
+  margin: 0;
+  padding: 0;
+}
+.layout-sidebar .layout-menu > li > div ol li:has(.menu-child-category) {
+  margin-top: 1rem;
+}
+.layout-sidebar .layout-menu > li > div ol li:has(.menu-child-category):first-child {
+  margin-top: 0rem;
+}
+.layout-sidebar .layout-menu .p-tag {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.layout-sidebar .layout-menu .p-tag .p-tag-value {
+  line-height: 1;
+}
+.layout-sidebar .layout-menu .menu-child-category {
+  display: flex;
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--surface-900);
+  margin-bottom: 0.25rem;
+}
+
+
+a {
+  text-decoration: none;
+}
+
